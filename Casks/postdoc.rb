@@ -1,6 +1,6 @@
 cask "postdoc" do
-  version "0.1.5"
-  sha256 "7c4f109ab8c0bc75713aa5fce2a247009f027ce063ac98d20292ead4b41a4486"
+  version "0.1.6"
+  sha256 "431e169eae54eca1753d24795dc1d995923192251aec2179c255eb1e1d54938a"
 
   url "https://github.com/Freza00/homebrew-postdoc/releases/download/v#{version}/Postdoc_#{version}_universal.dmg",
       verified: "github.com/Freza00/homebrew-postdoc/"
