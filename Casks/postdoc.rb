@@ -1,6 +1,6 @@
 cask "postdoc" do
-  version "0.1.0"
-  sha256 "e32caf6f283758c84961bc51196306d64daef81b562c0dfdee02c63f2c5e1c26"
+  version "0.1.1"
+  sha256 "3c5cc7c0f7572d6b75930f221708b273b803c0a289a561aa31494ec6a51cd8a3"
 
   url "https://github.com/Freza00/homebrew-postdoc/releases/download/v#{version}/Postdoc_#{version}_universal.dmg",
       verified: "github.com/Freza00/homebrew-postdoc/"
@@ -35,6 +35,10 @@ cask "postdoc" do
       brew install --cask --no-quarantine Freza00/postdoc/postdoc
 
     or right-click Postdoc.app → Open → Open the first time.
+
+    Once installed, future updates can be applied from inside the app:
+    Settings → Updates → Check for updates. The in-app updater works
+    regardless of how you installed (Homebrew or direct .dmg).
 
     A signed build (Developer ID) will land in a later release.
   EOS
