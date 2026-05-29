@@ -5,12 +5,13 @@ Install [Postdoc](https://lasca.ai) on macOS via Homebrew.
 ## Install
 
 ```sh
-brew install --cask --no-quarantine Freza00/postdoc/postdoc
+brew install --cask Freza00/postdoc/postdoc
 ```
 
-The `--no-quarantine` flag is needed for the Preview build, which is not yet
-signed with a Developer ID certificate. A signed build will land in a later
-release and this flag will become optional.
+The Preview build is not yet signed with a Developer ID certificate. The
+cask's `postflight` block strips the macOS quarantine attribute so the app
+launches cleanly on first open without right-click → Open. A signed build
+will land in a later release.
 
 ## Update
 
