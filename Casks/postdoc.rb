@@ -1,6 +1,6 @@
 cask "postdoc" do
-  version "0.1.12"
-  sha256 "f23909bc32f742e13c266cd0eeb301cedcf57746e3864674c919576c39d15732"
+  version "0.1.13"
+  sha256 "19369c5c85e116463bc2cc76acef59962514af1086f631541a75dc381755211b"
 
   url "https://github.com/Freza00/homebrew-postdoc/releases/download/v#{version}/Postdoc_#{version}_universal.dmg",
       verified: "github.com/Freza00/homebrew-postdoc/"
@@ -18,12 +18,11 @@ cask "postdoc" do
 
   app "Postdoc.app"
 
-  # Strip the macOS quarantine xattr after install. Postdoc Preview is
-  # distributed unsigned (Path B); without this, Gatekeeper would block
-  # first launch from Finder/Dock and the user would have to right-click
-  # → Open. Homebrew removed the `--no-quarantine` install flag in 2025,
-  # so a postflight is now the only way to ship an unsigned cask that
-  # opens cleanly. Runs as the installing user, no sudo needed.
+  # Belt-and-suspenders: strip the macOS quarantine xattr after install.
+  # The build is signed + notarized (Developer ID) as of 0.1.13, so
+  # Gatekeeper opens it cleanly without this; the postflight just removes
+  # any residual first-launch friction. Runs as the installing user, no
+  # sudo needed.
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-rd", "com.apple.quarantine", "#{appdir}/Postdoc.app"]
@@ -40,15 +39,8 @@ cask "postdoc" do
   ]
 
   caveats <<~EOS
-    Postdoc is currently distributed unsigned (Preview). The cask's
-    postflight strips the quarantine attribute so first launch should
-    open cleanly; if Gatekeeper still blocks it, right-click
-    Postdoc.app → Open → Open the first time.
-
-    Future updates can be applied from inside the app:
+    Updates can be applied from inside the app:
     Settings → Updates → Check for updates. The in-app updater works
     regardless of how you installed (Homebrew or direct .dmg).
-
-    A signed build (Developer ID) will land in a later release.
   EOS
 end
